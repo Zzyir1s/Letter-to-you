@@ -1,4 +1,14 @@
-const message = `I don’t even know if you’ll ever read this.\nBut if you do… I just want you to know, I still think about you sometimes.\n\nWe both tried. We both cared. But the universe just never gave us enough space to become “us.”\n\nI just wonder… if we had met at a different point in life, would the ending have been different?\n\nAnyway, I hope you're doing okay, even though we’re not in each other’s lives anymore.`;
+const page1 = `Hi bibii,
+
+This letter is for you, from your boyfriend. I just want you to know how deeply loved you are. I love you more and more every day, and I cherish every moment I get to spend with you. I can't help but fall in love with you all over again every time you smile. I love every word that comes from you, and I love everything about you.
+
+
+`;
+
+const page2 = `You make my days brighter just by being in them. The way you laugh, the way you care, the way you understand me it all means more to me than I can ever fully put into words. 
+
+I'm so grateful to have you in my life, and I promise to always stand by you, support you, and love you with all my heart.
+`;
 
 function showLetter() {
   document.getElementById("introText").style.opacity = 0;
@@ -11,13 +21,39 @@ function showLetter() {
     let i = 0;
 
     function typeWriter() {
-      if (i < message.length) {
-        typedText.innerHTML += message.charAt(i);
+      if (i < page1.length) {
+        typedText.innerHTML += page1.charAt(i);
         i++;
         setTimeout(typeWriter, 30);
+      } else {
+        // Show next button when first page is done
+        document.getElementById("nextBtn").style.display = "block";
       }
     }
 
     typeWriter();
   }, 600);
+}
+
+function showPage2() {
+  const letterBox = document.getElementById("letterBox");
+  const letterBox2 = document.getElementById("letterBox2");
+  const nextBtn = document.getElementById("nextBtn");
+  
+  letterBox.style.display = "none";
+  letterBox2.style.display = "block";
+  nextBtn.style.display = "none";
+  
+  const typedText2 = document.getElementById("typedText2");
+  let i = 0;
+
+  function typeWriter() {
+    if (i < page2.length) {
+      typedText2.innerHTML += page2.charAt(i);
+      i++;
+      setTimeout(typeWriter, 30);
+    }
+  }
+
+  typeWriter();
 }
